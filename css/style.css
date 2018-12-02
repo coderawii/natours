@@ -1,0 +1,198 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+}
+
+.header {
+    height: 95vh; /* 95% od viewporta  */ 
+    background-image: linear-gradient(to right bottom, rgba(120, 213, 111, 0.8), rgba(40, 180, 131, 0.8)), url(../img/hero.jpg);
+    background-size: cover; /* cover - koliko god da je width od viewporta ili elementa, uvek pokusava da postavi element unutar boxa  */
+    background-position: top;
+    position: relative;
+
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); /* (x y, x y, x y) */
+}
+
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px
+}
+
+.text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /* background: darkred; */
+    transform: translate(-50%, -50%); /* (x, y) */
+    text-align: center; /* ovako smo centritali dugme (msm i text naravno) */
+}
+
+.logo {
+    height: 35px;
+}
+/* 
+.logo:hover {
+    animation: moveInRight 1s ease;
+} */
+
+.heading-primary {
+    color:#fff;
+    text-transform: uppercase;
+
+    backface-visibility: hidden; /* kada se animacija vrsi, kao neki shake da se desi, zumiraj pa vidi, kao da naslov ode malo na gore pa na dole, npm. niko nzn sto se to desava */
+    margin-bottom: 60px;
+}
+
+.heading-primary-main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s; /* koliko traje animacija */
+    
+    
+    /* 
+        animation-delay: 3s; koliko se ceka pre neko sto animacija pocne
+        animation-iteration-count: 3; koliko x se ponovi nasa animacija (ovde 3x)
+        animation-timing-function: ease-out; 
+
+    */
+    
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.5px;
+
+    animation-name: moveInRight;
+    animation-duration: 1s;
+}
+
+@keyframes moveInLeft {
+    0% { /* momenat kad animacija pocinje */
+        opacity: 0;
+        transform: translateX(-100px);
+        /* transform: translateX(-100px) rotate(0deg) */
+    }
+/* 
+    60% {
+        transform: rotate(180deg);
+    } */
+
+    80% {
+        transform: translateX(10px);
+        /* transform: translateX(10px) rotate(180deg); */
+
+    }
+
+    100% { /* momenat kad se animacija zavrsila */
+        opacity: 1;
+        transform: translate(0);
+        /* transform: translate(0) rotate(180deg); */
+    }
+}
+
+@keyframes moveInRight {
+    0% { /* momenat kad animacija pocinje */
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+
+    100% { /* momenat kad se animacija zavrsila */
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInButton {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block; /* ako zelis da stavis padding, ili width, height elementu */
+    border-radius: 100px;
+    transition: all .2s;
+    position: relative;
+}
+
+.btn:hover {
+    transform: translateY(-3px); /* pomeramo na hover dugme na gore za 3px */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .2); /* x y blur color */
+}
+
+.btn:active {
+    transform: translateY(-1px); /* kada se klikne  */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2); /* x y blur color */
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn::after { /* ponasa se kao recimo children btn-a  */
+    content: "";
+    display: inline-block;
+    height: 100%; /* 100% od btn-a */
+    width: 100%; /* 100% od btn-a */
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; 
+}
+
+.btn-animated {
+    animation: moveInButton .5s ease-out .75s; /* dugme treba da se pojavi nakon .75s od reloada, medjutim, ovde je vidljivo odmah, zato treba da dodamo animation-fill-mode: backwards */
+    animation-fill-mode: backwards; /* automatski aplajduje stil i pre nego sto animacija pocne  */
+}
