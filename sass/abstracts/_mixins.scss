@@ -1,0 +1,7 @@
+@mixin clearfix {
+    &::after {
+        content: ""; /* bez ovoga pseudo element ne bi bio prikazan na stranici */
+        display: table; /* standardna verzija od klirfixa, table */
+        clear: both;
+    }
+}

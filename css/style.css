@@ -139,6 +139,40 @@ body {
   animation-fill-mode: backwards;
   /* automatski aplajduje stil i pre nego sto animacija pocne  */ }
 
+.row {
+  max-width: 114rem;
+  background-color: #eee;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    /* svi sem zadnjeg da imaju mb 6rem */
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    /* bez ovoga pseudo element ne bi bio prikazan na stranici */
+    display: table;
+    /* standardna verzija od klirfixa, table */
+    clear: both; }
+  .row [class^="col-"] {
+    /* ovo je atribut selektor, i selektuje sve class elemente cije ime pocinje (^) sa "col-", ako zelimo da selektujemo koje se zavrsavaju sa nekom recju onda je to $, a ako hocemo one koji sadrza oredjenu rec onda koristimo zvezdicu tj * */
+    background-color: orangered;
+    float: left;
+    color: #fff;
+    padding: 2rem; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
+
 .header {
   height: 95vh;
   /* 95% od viewporta  */
