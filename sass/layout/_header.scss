@@ -1,0 +1,31 @@
+.header {
+    height: 95vh; /* 95% od viewporta  */ 
+    background-image: linear-gradient(to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)),
+        url(../img/hero.jpg);
+    background-size: cover; /* cover - koliko god da je width od viewporta ili elementa, uvek pokusava da postavi element unutar boxa  */
+    background-position: top;
+    position: relative;
+
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); /* (x y, x y, x y) */
+
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+
+    &__logo {
+        height: 3.5rem;
+    }
+
+    &__text-box {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        /* background: darkred; */
+        transform: translate(-50%, -50%); /* (x, y) */
+        text-align: center; /* ovako smo centritali dugme (msm i text naravno) */
+    }
+}

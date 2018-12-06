@@ -1,216 +1,29 @@
-// variables sass
-$color-primary: #55c57a;
-$color-primary-light: #7ed56f;
-$color-primary-dark: #28b485;
-$color-grey-dark: #777;
-$color-white: #fff;
-$color-black: #000;
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
 
-*,
-*::after,
-*::before {
-    margin: 0;
-    padding: 0;
-    // box-sizing: border-box; premestamo ga i stavljamo u body i stavljamo da bude inherit, a ne border-box
-    box-sizing: inherit; // on po difoltu to nije, nije nasledan, i zato bolje ovde da ga stavimo da bude, a u body da je border-box (nmp)
-}
+@import "base/animations";
+@import "base/base"; /* ne treba _base, ni scss vec samo base, sass to prepozna */
+@import "base/typography";
+@import "base/utilities";
 
-html { // root font-size
-    // font-size: 10px; // dodali smo zbog rem-a
-    font-size: 62.5%; // stavili smo u procente da pomnozi sa difoltnim brauzerovim, ili onim koje je korisnik stavio da mu u brauzeru bude difoltni, dakle da je font-size: 100% to bi znacilo da stavljamo 16px, ami hocemo 10px, dakle 10/16=0.625 tj 62.5%. Ovo resava i problem sa zumom, ne raspada se sajt, tj font size, vec se prilagodjava. Imaj na umu da rem ne radi u sarim browserima
-}
+@import "components/button";
 
-body {
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    // font-size: 16px;
-    line-height: 1.7;
-    color: $color-grey-dark;
-    padding: 3rem;
-    box-sizing: border-box;
-}
+@import "layout/header";
 
-.header {
-    height: 95vh; /* 95% od viewporta  */ 
-    background-image: linear-gradient(to right bottom,
-        rgba($color-primary-light, 0.8),
-        rgba($color-primary-dark, 0.8)),
-        url(../img/hero.jpg);
-    background-size: cover; /* cover - koliko god da je width od viewporta ili elementa, uvek pokusava da postavi element unutar boxa  */
-    background-position: top;
-    position: relative;
+@import "pages/home";
 
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); /* (x y, x y, x y) */
 
-    &__logo-box {
-        position: absolute;
-        top: 4rem;
-        left: 4rem;
-    }
 
-    &__logo {
-        height: 3.5rem;
-    }
-
-    &__text-box {
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        /* background: darkred; */
-        transform: translate(-50%, -50%); /* (x, y) */
-        text-align: center; /* ovako smo centritali dugme (msm i text naravno) */
-    }
-}
 
 /* 
 .logo:hover {
     animation: moveInRight 1s ease;
 } */
 
-.heading-primary {
-    color:$color-white;
-    text-transform: uppercase;
-
-    backface-visibility: hidden; /* kada se animacija vrsi, kao neki shake da se desi, zumiraj pa vidi, kao da naslov ode malo na gore pa na dole, npm. niko nzn sto se to desava */
-    margin-bottom: 6rem;
-
-    &--main {
-        display: block;
-        font-size: 6rem;
-        font-weight: 400;
-        letter-spacing: 3.5rem;
-    
-        animation-name: moveInLeft;
-        animation-duration: 1s; /* koliko traje animacija */
-
-        /* 
-            animation-delay: 3s; koliko se ceka pre neko sto animacija pocne
-            animation-iteration-count: 3; koliko x se ponovi nasa animacija (ovde 3x)
-            animation-timing-function: ease-out; 
-    
-        */
-        
-    }
-    
-    &--sub {
-        display: block;
-        font-size: 2rem;
-        font-weight: 700;
-        letter-spacing: 1.75rem;
-    
-        animation-name: moveInRight;
-        animation-duration: 1s;
-    }
-}
 
 
 
-@keyframes moveInLeft {
-    0% { /* momenat kad animacija pocinje */
-        opacity: 0;
-        transform: translateX(-10rem);
-        /* transform: translateX(-100px) rotate(0deg) */
-    }
-/* 
-    60% {
-        transform: rotate(180deg);
-    } */
 
-    80% {
-        transform: translateX(1rem);
-        /* transform: translateX(10px) rotate(180deg); */
-
-    }
-
-    100% { /* momenat kad se animacija zavrsila */
-        opacity: 1;
-        transform: translate(0);
-        /* transform: translate(0) rotate(180deg); */
-    }
-}
-
-@keyframes moveInRight {
-    0% { /* momenat kad animacija pocinje */
-        opacity: 0;
-        transform: translateX(10rem);
-    }
-
-    80% {
-        transform: translateX(-1rem);
-    }
-
-    100% { /* momenat kad se animacija zavrsila */
-        opacity: 1;
-        transform: translate(0);
-    }
-}
-
-@keyframes moveInButton {
-    0% {
-        opacity: 0;
-        transform: translateY(3rem);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
-
-.btn {
-    &:link,
-    &:visited {
-        text-transform: uppercase;
-        text-decoration: none;
-        padding: 1.5rem 4rem;
-        display: inline-block; /* ako zelis da stavis padding, ili width, height elementu */
-        border-radius: 10rem;
-        transition: all .2s;
-        position: relative;
-        font-size: 1.6rem;
-    }
-
-    &:hover {
-        transform: translateY(-3px); /* pomeramo na hover dugme na gore za 3px */
-        box-shadow: 0 1rem 2rem rgba($color-black, .2); /* x y blur color */
-
-        &::after {
-            transform: scaleX(1.4) scaleY(1.6);
-            opacity: 0; 
-        }
-    }
-
-    &:active {
-        transform: translateY(-1px); /* kada se klikne  */
-        box-shadow: 0 .5rem 1rem rgba($color-black, .2); /* x y blur color */
-    }
-
-    &--white {
-        background-color: $color-white;
-        color: $color-grey-dark;
-
-        &::after {
-            background-color: $color-white;
-        }
-    }
-
-    &::after { /* ponasa se kao recimo children btn-a  */
-        content: "";
-        display: inline-block;
-        height: 100%; /* 100% od btn-a */
-        width: 100%; /* 100% od btn-a */
-        border-radius: 10rem;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        transition: all .4s;
-    }
-
-    &--animated {
-        animation: moveInButton .5s ease-out .75s; /* dugme treba da se pojavi nakon .75s od reloada, medjutim, ovde je vidljivo odmah, zato treba da dodamo animation-fill-mode: backwards */
-        animation-fill-mode: backwards; /* automatski aplajduje stil i pre nego sto animacija pocne  */
-    }
-}
 
 

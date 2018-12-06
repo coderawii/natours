@@ -1,0 +1,55 @@
+.btn {
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block; /* ako zelis da stavis padding, ili width, height elementu */
+        border-radius: 10rem;
+        transition: all .2s;
+        position: relative;
+        font-size: 1.6rem;
+    }
+
+    &:hover {
+        transform: translateY(-3px); /* pomeramo na hover dugme na gore za 3px */
+        box-shadow: 0 1rem 2rem rgba($color-black, .2); /* x y blur color */
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0; 
+        }
+    }
+
+    &:active {
+        transform: translateY(-1px); /* kada se klikne  */
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2); /* x y blur color */
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    &::after { /* ponasa se kao recimo children btn-a  */
+        content: "";
+        display: inline-block;
+        height: 100%; /* 100% od btn-a */
+        width: 100%; /* 100% od btn-a */
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+
+    &--animated {
+        animation: moveInButton .5s ease-out .75s; /* dugme treba da se pojavi nakon .75s od reloada, medjutim, ovde je vidljivo odmah, zato treba da dodamo animation-fill-mode: backwards */
+        animation-fill-mode: backwards; /* automatski aplajduje stil i pre nego sto animacija pocne  */
+    }
+}
