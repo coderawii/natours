@@ -8,7 +8,7 @@
         border-radius: 10rem;
         transition: all .2s;
         position: relative;
-        font-size: 1.6rem;
+        font-size: $default-font-size;
     }
 
     &:hover {
@@ -51,5 +51,30 @@
     &--animated {
         animation: moveInButton .5s ease-out .75s; /* dugme treba da se pojavi nakon .75s od reloada, medjutim, ovde je vidljivo odmah, zato treba da dodamo animation-fill-mode: backwards */
         animation-fill-mode: backwards; /* automatski aplajduje stil i pre nego sto animacija pocne  */
+    }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block; /* da bi mogli da koristimo box model, padding, margin itd */
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px; /* ovo i border-bottom je u px jer je mng mala velicina u pitanju, pa ne mora rem u ovom slucaju */
+
+    }
+
+    &:hover {
+        background: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        transform: scaleY(1.2);
+        transform: translateY(0);
     }
 }

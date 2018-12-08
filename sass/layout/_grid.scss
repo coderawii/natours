@@ -1,6 +1,6 @@
 .row {
     max-width: $grid-width;
-    background-color: #eee;
+    // background-color: #eee;
     margin: 0 auto;
 
     &:not(:last-child){ /* svi sem zadnjeg da imaju mb 6rem */
@@ -10,10 +10,10 @@
     @include clearfix;
 
     [class^="col-"] { /* ovo je atribut selektor, i selektuje sve class elemente cije ime pocinje (^) sa "col-", ako zelimo da selektujemo koje se zavrsavaju sa nekom recju onda je to $, a ako hocemo one koji sadrza oredjenu rec onda koristimo zvezdicu tj * */
-        background-color: orangered;
         float: left;
-        color: #fff;
-        padding: 2rem;
+        // background-color: orangered;
+        // color: #fff;
+        // padding: 2rem;
 
         &:not(:last-child) {
             margin-right: $gutter-horizontal;

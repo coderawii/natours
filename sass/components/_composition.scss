@@ -1,0 +1,40 @@
+.composition {
+    position: relative;
+
+    &__photo {
+        width: 55%;
+        box-shadow: 0 1rem 4rem rgba($color-black, .4);
+        border-radius: 2px;
+        position: absolute;
+        z-index: 10;
+        transition: all .2s;
+        outline-offset: 2rem; /* izgleda kao da ima prostor izmedju 'rama' slike i slike */
+
+        &--p1 {
+            top: 0;
+            top:  -2rem;
+        }
+
+        &--p2 {
+            right: 0;
+            top: 2rem;
+        }
+
+        &--p3 {
+            left: 20%;
+            top: 10rem;
+        }
+
+        &:hover {
+            outline: 1.5rem solid $color-primary; /* ovo za sad izgleda kao da smo stavili border, ali zato gore, u __photo stavljamo outline-offset, i onda izgleda kao da ima prostor izmedju 'rama' slike i slike */
+            transform: scale(1.05) translateY(-.5rem); /* scale ga ovde poveca za malo, a translateY ga pomeri na gore */
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+            z-index: 20;
+
+        }
+    }
+
+    &:hover &__photo:not(:hover) { // composition:hover composition__photo:not(:hover) - dakle kada hoverujemo compositin div, selektuj divove tj slike koje NISU hoverovane i smanji je malo 
+        transform: scale(.95);
+    }
+}
