@@ -3,3 +3,19 @@
     padding: 25rem 0;
     margin-top: -20vh; /* jer je height headera 95vh, a u clip pathu imamo ono gde je 75vh, pa tako 95-75=20vh, a negativno je da ide na gore */
 }
+
+.section-features {
+    padding: 20rem 0;
+    // ovo smo kopirali iz header.scss jer je prakticno ista fora slike i gradijenta
+    background-image: linear-gradient(to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)),
+        url("../img/nat-4.jpg");
+    background-size: cover;
+    transform: skewY(-7deg);
+    margin-top: -10rem;
+
+    & > * { // sva DIREKTNA deca u section-feature, da nismo samo na direktnu decu primenii ovaj skewY efekat, vec na sve childrene, onda bi se svaki children skjuvovao za 7deg, i icon i text i sve \\\\\
+        transform: skewY(7deg);
+    }
+}
