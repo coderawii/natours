@@ -1,15 +1,16 @@
 .card {
+    // FUNCTIONALITY
     perspective: 150rem;// ide velik broj pixela!! Perspective se stavlja u parent element od onog u kom je transform, tj u kom je rotaza
     -moz-perspective: 150rem;
     position: relative;
-    height: 50rem; // !!! procitaj dole zasto !!!
+    height: 52rem; // !!! procitaj dole zasto !!!
 
     &__side {
         background-color: orangered;
-        color: #fff;
+        // color: #fff;
         font-size: 2rem;
-        height: 50rem;
-        transition: all .8s ease; // stavi 5s da vidis desavanja
+        height: 52rem;
+        transition: all .8s ease; // !!!! stavi 8s da vidis desavanja, ROTIRA SE U POGRESNOM PRAVCU, zelimo da se front rotira, i onda abck da se pojavi kao da se card nastavi rotirati, a ne front se rotira u jednom pravcu, a potom back u drugom, i zato za front rotazu samo stavljamo negatovnu vrednost tj -180deg !!!!
         position: absolute; // pre ovoga su divovid front i back jedan ispoda drugog, a treba da budu jedan ispod drugog, tj back ispod fronta, i jos dodajemo z-index, ne zaboravi da parentu stavis da je relative
         top: 0;
         left: 0;
@@ -19,6 +20,7 @@
         // i sada nesto ne stima, kad pogledamo u inspectu vidimo da .card divu fali height, nema ga uopste, iako ova dva childrena njegova imaju, tu se desilo nesto slicno kao i sa float-om akd koristimo, pa ne stavimo clearfixer, i onda roditelj izgubi height, a posto ova dva diva (front i back) koriste absolut (i top i left) da ne bi vise bili jedan ispod drugog, oni su izvuceni iz svog prirodnog toka, i desava se nes kao i kof float-a. I moramo da i card-u stavimo  height: 50rem;
 
         border-radius: 3px;
+        overflow: hidden; // slike iz .picture prevazilazi granice coskova, tj overflowuje, i zato ovaj overflow hidden. Probaj sa radiusom 300px i iskljucenim overflowom, videces razliku
         box-shadow: 0 1.5rem 4rem rgba($color-black, .15); // trebalo bi i ovo u variables jer se ponavlja
 
         &--front {
@@ -27,7 +29,7 @@
 
         &--back {
             background-color: green;
-            transform: rotateY(180deg);
+            transform: rotateY(-180deg);
 
             &-1 {
                 background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
@@ -45,5 +47,72 @@
     &:hover &__side--back {
         transform: rotateY(0); 
     }
+
+    // FRONT SIDE STYLING
+    &__picture {
+        background-size: cover; // sve tri slike imaj uovaj sajz
+        height: 23rem;
+        background-blend-mode: screen; // dodamo gradient na img, i onda dodamo blend fekat. Ne radi u svim browserima, safari, firefox, i chrome. Ovaj blend efekat bi ranije morali prvo u fotosopu da odradimo, pa onda takvu sliku ucitamo, a ovde to naknadno mozemo css-om da radimo
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); // webkit prefixer ide pre ovog dole clip-path
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        
+
+        &--1 {
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), url("../img/nat-5.jpg"); // idemo samo 1 level napolje jer dopiremo do img foldera iz kompajliranog css- tj css/style.css, a ne iz ovog fajla      
+        }
+
+        &--2 {
+            background-image: url("../img/nat-6.jpg");
+        }
+
+        &--3 {
+            background-image: url("../img/nat-7.jpg");
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: right;
+        color: $color-white;
+        position: absolute;
+        top: 12rem;
+        right: 2rem;
+        width: 75%;
+    }
+
+    &__heading-span {
+        padding: 1rem 1.5rem; // i sada posto je span block element, THE SEA je u jednom redu, a EXPLORER u drugom, ali izgledaju kao da nemaju isti space levo i desno (vec samo na pocetku cele recenice, i na kraju, a ne gde je "break") i zato se koristi BOX-DECORATION-BREAK: clone;
+        -webkit-box-decoration-break: clone;        
+        box-decoration-break: clone;
+
+        &--1 {
+            background-image: linear-gradient(to right bottom,
+            rgba($color-secondary-light ,8.5),
+            rgba($color-secondary-dark ,.85))
+        }
+    }
+
+    &__details {
+        padding: 3rem;
+
+        ul {
+            list-style: none;
+            width: 80%; // jer ce border-bottom u listi biti 100%, a ul centriran, a ne zelimo da ide skroz od leve strane carda do desne, vec 80% carda
+            margin: 0 auto; // centriranje block elementa unutar block elementa
+
+            li {
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-grey-light-2;
+                }
+            }
+        }
+    }
 }
 
+// 

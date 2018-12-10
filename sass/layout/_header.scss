@@ -8,6 +8,7 @@
     background-position: top;
     position: relative;
 
+    -wekit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* (x y, x y, x y) */
 
     &__logo-box {
