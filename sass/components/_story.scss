@@ -26,13 +26,42 @@
         -webkit-clip-path: circle(50% at 50% 50%);
         clip-path: circle(50% at 50% 50%);
         transform: translateX(-3rem) skewX(12deg); // nismo se zezali sa paddingfom i marginom, vec smo ovako malo odvojili krug od texta, ali wtf, dodali smo padding-left: 9rem gore u __story
+        position: relative;
     }
 
     &__img {
         height: 100%; // img uvek mora da ima width, a 100% je jer je slika unutar __shape diva koji ima width i height 15rem, pa ce slika biti velicine tog shape-a - NE ZNAM KOLIKO JE OVO TACNO< STA ZAPISAH
+        transform: translateX(-4rem) scale(1.4); // i sad mi nije jasno kako moze transform na vise mesta odjednom, hmmm?? Aha, nije u isto vreme vec na hover?
+        // backface-visibility: hidden; // on je ovo ovde dodao jer mu se slika kao raspala, ka da se suzila i preklopila
+        transition: all .5s;
+
     }
 
     &__text {
         transform: skewX(12deg);
+    }
+
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%); // da bude nize, i onda kad se hoveruje story, text kao dolazi od dole, tj za &:hover &__caption tranlate(-50%, -50%)
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0;
+        transition: all .5s;
+        backface-visibility: hidden; // jer se kao text kad se pojavljuje malo zatrese po zavrsetku transitiona/animacije, mada cini mi se da se kod mene zatrese i sad
+    }
+
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover &__img {
+        transform: translateX(-4rem) scale(1); // scale da izgleda kao neki anti-zum, zato je manji nego u __img-u
+        filter: blur(3px) brightness(80%);
     }
 }
