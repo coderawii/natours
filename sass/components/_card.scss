@@ -35,6 +35,14 @@
                 background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
             }
 
+            &-2 {
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+            }
+
+            &-3 {
+                background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+            }
+
         }
         // !!!!!!!!!!!!!!!!! razlika izmedju back i front side: back side je na pocetku vec rotiran za 180deg, a front nije, i kad hoverujemo card, front se okrece 180deg, a back stavljamo na 0deg !!!!!!!!!!!!!!!!!!!!
     }
@@ -54,7 +62,9 @@
         height: 23rem;
         background-blend-mode: screen; // dodamo gradient na img, i onda dodamo blend fekat. Ne radi u svim browserima, safari, firefox, i chrome. Ovaj blend efekat bi ranije morali prvo u fotosopu da odradimo, pa onda takvu sliku ucitamo, a ovde to naknadno mozemo css-om da radimo
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); // webkit prefixer ide pre ovog dole clip-path
-        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); 
+        border-top-left-radius: 3px; // kad se koristi clip-path ne mozemo overflow, pa cemo manualno da stavimo border-top-left-radius i border-top-right-radius
+        border-top-right-radius: 3px; 
         
 
         &--1 {
@@ -62,11 +72,11 @@
         }
 
         &--2 {
-            background-image: url("../img/nat-6.jpg");
+            background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), url("../img/nat-6.jpg");
         }
 
         &--3 {
-            background-image: url("../img/nat-7.jpg");
+            background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), url("../img/nat-7.jpg");
         }
     }
 
@@ -92,6 +102,18 @@
             rgba($color-secondary-light ,8.5),
             rgba($color-secondary-dark ,.85))
         }
+
+        &--2 {
+            background-image: linear-gradient(to right bottom,
+            rgba($color-primary-light ,8.5),
+            rgba($color-primary-dark ,.85))
+        }
+
+        &--3 {
+            background-image: linear-gradient(to right bottom,
+            rgba($color-tertiary-light ,8.5),
+            rgba($color-tertiary-dark ,.85))
+        }
     }
 
     &__details {
@@ -113,6 +135,31 @@
             }
         }
     }
-}
 
-// 
+    // BACK SIDE STYLING
+    &__cta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%; // jer je btn uzak, tj citav cta div u kom je
+        text-align: center; // centriramo btn
+    }
+
+    &__price-box {
+        text-align: center;
+        color: $color-white;
+        margin-bottom: 8rem;
+    }
+
+    &__price-only {
+        font-style: 1.4rem;
+        text-transform: uppercase;
+    }
+
+    &__price-value {
+        font-size: 6rem;
+        font-weight: 100; // kada imamo veliki text bolje je da je tanji
+    }
+
+} // end .card

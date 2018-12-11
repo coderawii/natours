@@ -22,7 +22,7 @@
 
 .section-tours { // kao section-about, pa cemo kopirati nes
     background-color: $color-grey-light-1;
-    padding: 25rem 0 50rem 0; // morali smo povecati na 50rem bottom 
+    padding: 25rem 0 15rem 0; // morali smo povecati na 50rem bottom 
     margin-top: -10rem; // da bi popunili beo prazan prostotr kod gradienta tj skew-a od section-features, pomeramo ovaj div gore za 10rem tj 100px
 
 }
