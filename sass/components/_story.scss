@@ -1,0 +1,38 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black, .1);
+    // background-color: $color-white;
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem;
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+
+    // & > * {
+    //     transform: skewX(12deg); // ovako smo u prethodnoj lekciji ravnali direktne cildrene unutar skew-ovanog diva, ali ovde ovo ravnanje ovako nece funcionisati, tj text ce "ispraviti", ali sliku ne !!!! A to je jer slika vec koristi neki TRANSFORM (transform: translateX(-3rem)), a u css trenutno nema mogucnosti da se prihvate oba transforma u isto vreme.
+    //     // pa cemo ovo obrisati/zakomentarisati, i posebno dodati skewY za text, i posebno za shape, porem ovog translateX-a !!!!!!!!!!!!!
+    // }
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        // background-color: orangered;
+        float: left;
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%); // velicina kruga (radius), posizija centra kruga (u ovom slucaju 50% od heighta i 50% od widtha). Ovde je krug 15rem kao sto vidimo (width/height), dakle pola (50%) je 7.5rem, i stavljamo 50% (za width) i 50% (za height)
+        // da text porem ovog shape-a tj kruga bude istog oblika, tj kao da text ide oko kruga u kruznom obliku, kao napako C u ovom slucaju
+
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        transform: translateX(-3rem) skewX(12deg); // nismo se zezali sa paddingfom i marginom, vec smo ovako malo odvojili krug od texta, ali wtf, dodali smo padding-left: 9rem gore u __story
+    }
+
+    &__img {
+        height: 100%; // img uvek mora da ima width, a 100% je jer je slika unutar __shape diva koji ima width i height 15rem, pa ce slika biti velicine tog shape-a - NE ZNAM KOLIKO JE OVO TACNO< STA ZAPISAH
+    }
+
+    &__text {
+        transform: skewX(12deg);
+    }
+}

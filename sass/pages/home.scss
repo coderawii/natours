@@ -26,3 +26,8 @@
     margin-top: -10rem; // da bi popunili beo prazan prostotr kod gradienta tj skew-a od section-features, pomeramo ovaj div gore za 10rem tj 100px
 
 }
+
+.section-stories { 
+    padding: 15rem 0;
+    background-color: $color-grey-light-1;
+}
