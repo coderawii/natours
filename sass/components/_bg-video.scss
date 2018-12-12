@@ -1,0 +1,17 @@
+.bg-video {
+    position: absolute; // oarentu moramo staviti da je relative, tj idemo  _home.scss u div .section-stories
+    top: 0;
+    left: 0; 
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: .15;
+    overflow: hidden;
+
+        // hocemo sad da video bude preko citavog sadrzaja section-stories, i da takodje ne izlece iz njegovih ivica, tj da ne overfloatuje, pokusavamo to da resimo sa h: 100% i w: 100%, ali ne ide to tako ovde, sad cak deluje kao da je totalno manji video, zato dodajemo i object-fit: cover;
+    &__content {
+        height: 100%;
+        width: 100%;
+        object-fit: cover; // dodje mu kao za slike, background-size: cover; popunjava ceo parent element (section-stories) sa videom, medjutim, opet se overfloatuje, dakle, dodamo u .bg-video overfloat
+    }
+}
