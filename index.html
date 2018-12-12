@@ -301,10 +301,35 @@
                                     <input type="text" class="form__input" placeholder="Full name" required id="name"/>
                                     <label for="name" class="form__label">Full name</label><!-- for iz labela i id iz inputa moraju biti isti, oni se tako konektuju, i kada se klikne u browseru na label, input s kojim je povezan ce se fokusirati, tj mis ce se fokusirati u taj input - WOW, NISAM ZNALA !! -->
                                 </div>
-                                
+
                                 <div class="form__group">
                                     <input type="text" class="form__input" placeholder="Email address" required id="email"/>
                                     <label for="email" class="form__label">Email address</label>
+                                </div>
+
+                                <div class="form__group .u-margin-bottom-medium">
+                                    <div class="form__radio-group">
+                                        <input type="radio" class="form__radio-input" id="small" name="size" />
+                                        <label for="small" class="form__radio-label">
+                                            <span class="form__radio-button"></span>
+                                            Small tour group
+                                        </label>
+                                    </div>
+
+                                    <div class="form__radio-group">
+                                        <input type="radio" class="form__radio-input" id="large" name="size" />
+                                        <label for="large" class="form__radio-label">
+                                            <!-- sakricemo input, a ovaj span ce biti nase radio dugme, a input-radio iako ce biti sakriven, moci ce biti selektovan -->
+                                            <span class="form__radio-button"></span>
+                                            Large tour group
+                                        </label>
+                                    </div>
+    
+                                </div>
+
+                                <div class="form-group">
+                                    <!-- u FORM-i potreban nam je pravo dugme, ne mozemo koristiti link, tj <a></a> -->
+                                    <button class="btn btn--green">Next step &rarr;</button>
                                 </div>
 
                             </form>
