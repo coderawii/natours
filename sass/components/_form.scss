@@ -1,0 +1,51 @@
+.form {
+
+    &__group:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+    &__input { // ne nasledjuje font propertyije iz projekta
+        font-size: 1.5rem;
+        font-family: inherit;  // za placeholder font-family nije kao u citavom projektu tj Lato, vec browser stavlja svoj difoltni font-family, zato ovde stavljamo inherit, tj da nasledi font-family koji smo mi ranije stavili
+        color: inherit; // isto kao i za font-family
+        padding: 1.5rem 2rem;
+        border-radius: 2px;
+        background-color: rgba($color-white, .5);
+        border: none;
+        border-bottom: 3px solid transparent;
+        width: 90%;
+        display: block;
+
+        &:focus {
+            outline: none; // plavi okvir oko inputa kad kliknemo misem u njega
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            border-bottom: 3px solid $color-primary; // kada se fokusira na input, ovaj dole input kao da se pomeri na dole malo, a to je jer nema bordera od 3PX sve dok se ne fokusira, ne zauzima nikakav prostor, zato dodajemo i u __input border-bottom ali ce biti transparentan
+        }
+
+        &:focus:invalid {
+            border-bottom: 3px solid $color-secondary-dark;
+        }
+
+        &::-webkit-input-placeholder {
+            color: $color-grey-dark-2;
+        }
+
+        
+
+    }
+
+    &__label {
+        font-style: 1.2rem;
+        font-weight: 700;
+        margin-left: 2rem;
+        margin-top: .7rem;
+        display: block;
+        transition: all .3s;
+    }
+
+    &__input:placeholder-shown + &__label { // zelimo da label bude sakriven, a ne input, dodajemo + tj sibling selector, dakle prvo selektujemo input pa potom sa sibling selektorom selektujemo prvi sibling sto je label. Da je izmedju inputa i labela bilo jos nekih divova tj elemenata, takodje bi mogl iselektovati label preko inputa, ali sa drugim selektorom ~ tilda. Da je label element u htmlu PRE inputa, nema sanse da bi mogli da ga selektujemo bilo kojim selektorom preko inputa
+        opacity: 0;
+        visibility: hidden; // zasto ne koristimo samo opacity? jer sa njim element je i dalje tu tj moze da se klikne na njega a da ne znamo, a sa visibility: hidden, ne. A zasto onda ne koristimo samo visibility? Jer njega ne mozemo da animiramo/transition, dok opacity mozemo! 
+        transform: translateY(-4rem); // pogledaj kako izgleda ovaj efekat sa zakomentarisanim opacityjem i visibilityjem !
+    }
+}
