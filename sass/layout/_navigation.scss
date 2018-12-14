@@ -11,7 +11,8 @@
         top: 6rem; // i ovo smo smanjili za 0.5rem 
         right: 6rem; // i ovo smo smanjili za 0.5rem
         border-radius: 50%;
-        z-index: 2000; 
+        z-index: 2000;
+        box-shadow: 0 1rem 3rem rgba($color-black, .1);
 
     }
 
@@ -25,16 +26,23 @@
         background-image: radial-gradient($color-primary-light, $color-primary-dark);
         z-index: 1000; // z-index samo deluje na elemente kojima je position definisana
 
-        transform: scale(90); // kasnije cemo kad se navigacija cekira/otvori, background postane sto veci, tj skejluje se, i to cemo animirati
+        // transform: scale(90); // kasnije cemo kad se navigacija cekira/otvori, background postane sto veci, tj skejluje se, i to cemo animirati
+        transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1); // custom transform. easing.net
     }
 
     &__nav {
         height: 100vh;
-        width: 100%; // ne moramo ovo definisati jer je ovo block element a on po difoltu okupira 100%
+        // width: 100%; // ne moramo ovo definisati jer je ovo block element a on po difoltu okupira 100%
         position: fixed;
         top: 0;
-        right: 0; // krecemo od gornjeg desnog ugla
+        left: 0; // kad se cekira dugme navigacija se pojavljuje s leve strane, i zbog __list { width: 100% } (tj ja bih rekla zbog __nav { width: 100%) i zbog ovog ovde transition-a, izgleda kul, stavi background da bolje vidis efekat
+        // background-color: orangered;
         z-index: 1500; // __button trbda bude na vrhu svega, a __nav da bude iznad __background-a, dakle ovde je z-index veci od __background, a manji od __ button
+        
+        opacity: 0; // linkovi su i dalje tu samo nisu vidljivi, zato dodajemo width: 0
+        width: 0; // a gore smo zakomentarisali width: 100%, to cemo kad se cekira checkbox, tj klikne na button menu
+        transition: all .8s;
+
     }
 
     &__list {
@@ -45,6 +53,7 @@
         @include align-vh;
         list-style: none;
         text-align: center;
+        width: 100%; // stavi background pa se igraj sto je bitno
     }
 
     &__item {
@@ -80,6 +89,15 @@
             color: $color-primary;
             transform: translateX(1rem); // DODAJ U __LINK:VISITED/LINK DA JE DISPLAY: INLINE-BLOCK INACE NECE OVO PRIHVATITI
         }
-        
+    }
+
+    // kliknemo na label, i tada checkbox postaje cekiran, i onda zelimo da nav button postane vidljiv
+    &__checkbox:checked ~ &__background {
+        transform: scale(90);
+    }
+
+    &__checkbox:checked ~ &__nav {
+        opacity: 1;
+        width: 100%; // zezaj se s ovim, probaj sa 50% !!!
     }
 }
