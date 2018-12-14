@@ -13,6 +13,8 @@
         border-radius: 50%;
         z-index: 2000;
         box-shadow: 0 1rem 3rem rgba($color-black, .1);
+        text-align: center;
+        cursor: pointer;
 
     }
 
@@ -91,6 +93,7 @@
         }
     }
 
+    // FUNCTIONALITY
     // kliknemo na label, i tada checkbox postaje cekiran, i onda zelimo da nav button postane vidljiv
     &__checkbox:checked ~ &__background {
         transform: scale(90);
@@ -100,4 +103,54 @@
         opacity: 1;
         width: 100%; // zezaj se s ovim, probaj sa 50% !!!
     }
+
+    // ICON tj BUTTON MENU
+    &__icon {
+        position: relative; // nzm kako ispade __icon parent od njegovog ::after i ::before
+        margin-top: 3.5rem;
+
+        &,
+        &::before,
+        &::after {
+            width: 3rem; // before i after zavise od VELICINE, dakle ako uklonima width i height, sjebali smo poziciju aftera i befora
+            height: 2px;
+            background-color: $color-grey-dark-3;
+            display: inline-block; // mora da ima display property
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: all .2s;
+        }
+
+        &::before { top: -.8rem;  /* transform-origin: right; */} // od glavnog span-a tj icon-a na gore 0.8rema. A transform-origin znaci od koje tacke se vrsi transformacija, ovde ce ostati fixirano u desnoj tacki i odatle ce ici na gore, isto vazi i za left, a ako ne stavimo, transformacija ide od centra, tj fixirana je u centru
+        &::after { top: .8rem; } // od glavnog span-a tj icon-a na dole 0.8rema
+    }
+
+    &__button:hover &__icon::before { // mozemo ovako da selektujemo jer je icon child od button-a
+        top: -1rem;
+    }
+
+    &__button:hover &__icon::after {
+        top: 1rem;
+    }
+
+    &__checkbox::checked + &__button &__icon { // kada je .checkbox cekiran, selektujemo njegovog brata .button-a, preko kog selektujemo button child tj .icon
+        background-color: transparent; // kod mene nece da sakrije srednju liniju tj span
+    }
+
+    &__checkbox::checked + &__button &__icon::before {
+        top: 0;
+        transform: rotate(135deg); // 180deg - 45deg = 35deg
+    }
+
+    &__checkbox::checked + &__button &__icon::after {
+        top: 0;
+        transform: rotate(-135deg);        
+    }
 }
+
+// transform-origin: opisuje gde se transformacija dogadja
