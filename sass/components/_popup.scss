@@ -1,0 +1,55 @@
+.popup {
+    height: 100vh;
+    width: 100%; // nije neophodno al ae
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba($color-black, .8);
+    z-index: 9999;
+    
+    &__content {
+        @include absCenter;
+        width: 75%;
+        background-color: $color-white;
+        box-shadow: 0 2rem 4rem rgba($color-black, .2);
+        border-radius: 3px;
+        display: table; // browser ce njegovoj deci koja imaju display- table-cell property dati isti height
+        overflow: hidden; // zbog slika koje vire iz okvira
+    }
+
+    &__left {
+        width: 33.33333%;
+        // float: left; // brisemo float jer cemo koristiti table-cell
+        display: table-cell;
+    }
+
+    &__right {
+        width: 66.6666667%;
+        // float: left; // moze i right, kao nije bitno jer zajedno zauzimaju 100% width-a (wtf). brisemo float jer cemo koristiti table-cell, jer i zelumo da oba diva budu iste visine
+        display: table-cell;
+        vertical-align: middle;
+        padding: 3rem 5rem;
+    }
+
+    &__img {
+        display: block;
+        width: 100%;
+    }
+
+    &__text {
+        font-size: 1.4rem;
+        margin-bottom: 4rem;
+
+        -moz-column-count: 2;
+        -moz-column-gap: 4rem;
+        -moz-column-rule: 1px solid $color-grey-light-2;
+        column-count: 2; // automatcki kreira kolone od texta
+        column-gap: 4rem; // 1em = 14px tj font size of the current element, gap mu dodje prostor izmedju kolona
+        column-rule: 1px solid $color-grey-light-2; // crtica na sredini gap-a
+
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto; // crtice kao nastavka neke reci u sledecem redu
+    }
+}

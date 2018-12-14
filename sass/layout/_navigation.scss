@@ -52,7 +52,7 @@
         // top: 50%;
         // left:50%;
         // transform: translate(-50%, -50%); // mozemo napraviti mixin za ove 4 stvari za verikalno centriranje jer se dosta ponavlja u projektu
-        @include align-vh;
+        @include absCenter;
         list-style: none;
         text-align: center;
         width: 100%; // stavi background pa se igraj sto je bitno
@@ -138,6 +138,7 @@
         top: 1rem;
     }
 
+        // M E N I     N E    R A D I    O V A J     D E O     S A    :C H E C K E D   !!!!!!!!!!!!!!!!!!!
     &__checkbox::checked + &__button &__icon { // kada je .checkbox cekiran, selektujemo njegovog brata .button-a, preko kog selektujemo button child tj .icon
         background-color: transparent; // kod mene nece da sakrije srednju liniju tj span
     }
