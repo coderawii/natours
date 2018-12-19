@@ -43,7 +43,7 @@
         
         opacity: 0; // linkovi su i dalje tu samo nisu vidljivi, zato dodajemo width: 0
         width: 0; // a gore smo zakomentarisali width: 100%, to cemo kad se cekira checkbox, tj klikne na button menu
-        transition: all .8s;
+        transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     }
 
@@ -138,17 +138,17 @@
         top: 1rem;
     }
 
-        // M E N I     N E    R A D I    O V A J     D E O     S A    :C H E C K E D   !!!!!!!!!!!!!!!!!!!
-    &__checkbox::checked + &__button &__icon { // kada je .checkbox cekiran, selektujemo njegovog brata .button-a, preko kog selektujemo button child tj .icon
+        // M E N I     N E    R A D I    O V A J     D E O     S A    :C H E C K E D   !!!!!!!!!!!!!!!!!!! SAD RADIIIIII, stavila sam ::CHECKED umesto :CHECKED, sa jednom dvotackom !!!!!!!!!!!!!!!!!!!!!!!!!!
+    &__checkbox:checked + &__button &__icon { // kada je .checkbox cekiran, selektujemo njegovog brata .button-a, preko kog selektujemo button child tj .icon
         background-color: transparent; // kod mene nece da sakrije srednju liniju tj span
     }
 
-    &__checkbox::checked + &__button &__icon::before {
+    &__checkbox:checked + &__button &__icon::before {
         top: 0;
-        transform: rotate(135deg); // 180deg - 45deg = 35deg
+        transform: rotate(135deg); // 180deg - 45deg = 135deg
     }
 
-    &__checkbox::checked + &__button &__icon::after {
+    &__checkbox:checked + &__button &__icon::after {
         top: 0;
         transform: rotate(-135deg);        
     }

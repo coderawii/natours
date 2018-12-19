@@ -84,7 +84,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background-color: $color-primary;
-            opacity: 0;
+            opacity: 0; // po difoltu se ne vidi, tj odaje se efekat kao da ni jedan radio nije cekiran
         }
     }
 

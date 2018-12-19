@@ -13,7 +13,7 @@
         url("../img/nat-4.jpg");
     background-size: cover;
     transform: skewY(-7deg);
-    margin-top: -10rem;
+    margin-top: -15rem;
 
     & > * { // sva DIREKTNA deca u section-feature, da nismo samo na direktnu decu primenii ovaj skewY efekat, vec na sve childrene, onda bi se svaki children skjuvovao za 7deg, i icon i text i sve \\\\\
         transform: skewY(7deg);
@@ -23,7 +23,7 @@
 .section-tours { // kao section-about, pa cemo kopirati nes
     background-color: $color-grey-light-1;
     padding: 25rem 0 15rem 0; // morali smo povecati na 50rem bottom 
-    margin-top: -10rem; // da bi popunili beo prazan prostotr kod gradienta tj skew-a od section-features, pomeramo ovaj div gore za 10rem tj 100px
+    margin-top: -20rem; // da bi popunili beo prazan prostotr kod gradienta tj skew-a od section-features, pomeramo ovaj div gore za 10rem (20rem je potrebno kad se odzumira) tj 100px
 
 }
 
@@ -43,7 +43,7 @@
                                     rgba($color-white, .9) 50%, /* 50% je providno belo, tj do pola diva (s leva na desno) je providno bele boje */
                                     /*orangered 50%*/
                                     transparent 50%), // 50% je narandzasto, dakle do pola diva (s desna na levo zzbog 105deg) je skroz narandzasto.... /* solid line se napravi (ta linija izmedju bele i narandzaste) zato on ovo zove solid-gradients*/
-                                    url("../img/nat-10.jpg"); // ovo nije moguce svugde primetini, recimo tamo gde je clip-path radjen, stv je moralo sa njim, ne sa ovim
+                                    url("../img/nat-10.jpg"); // ovo nije moguce svugde primeniti, recimo tamo gde je clip-path radjen, stv je moralo sa njim, ne sa ovim
     background-size: 100%; // isto sto i cover
     border-radius: 3px;
     box-shadow: 0 1.5rem 4rem rgba($color-black, .2);

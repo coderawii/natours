@@ -225,7 +225,7 @@ body {
     outline-offset: 2rem;
     /* izgleda kao da ima prostor izmedju 'rama' slike i slike */ }
     .composition__photo--p1 {
-      top: 0;
+      left: 0;
       top: -2rem; }
     .composition__photo--p2 {
       right: 0;
@@ -258,6 +258,7 @@ body {
     display: inline-block;
     background-image: linear-gradient(to right, #7ed56f, #28b485);
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent; }
   .feature-box:hover {
     transform: translateY(-1.5rem) scale(1.03); }
@@ -268,7 +269,6 @@ body {
   position: relative;
   height: 52rem; }
   .card__side {
-    background-color: orangered;
     font-size: 2rem;
     height: 52rem;
     transition: all .8s ease;
@@ -324,11 +324,11 @@ body {
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone; }
     .card__heading-span--1 {
-      background-image: linear-gradient(to right bottom, #ffb900, rgba(255, 119, 48, 0.85)); }
+      background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.85), rgba(255, 119, 48, 0.85)); }
     .card__heading-span--2 {
-      background-image: linear-gradient(to right bottom, #7ed56f, rgba(40, 180, 133, 0.85)); }
+      background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.85), rgba(40, 180, 133, 0.85)); }
     .card__heading-span--3 {
-      background-image: linear-gradient(to right bottom, #2998ff, rgba(86, 67, 250, 0.85)); }
+      background-image: linear-gradient(to right bottom, rgba(41, 152, 255, 0.85), rgba(86, 67, 250, 0.85)); }
   .card__details {
     padding: 3rem; }
     .card__details ul {
@@ -496,11 +496,14 @@ body {
 .popup {
   height: 100vh;
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.8);
-  z-index: 9999; }
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s; }
   .popup__content {
     position: absolute;
     top: 50%;
@@ -511,7 +514,10 @@ body {
     box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
     border-radius: 3px;
     display: table;
-    overflow: hidden; }
+    overflow: hidden;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25);
+    transition: all .5s .2s; }
   .popup__left {
     width: 33.33333%;
     display: table-cell; }
@@ -536,6 +542,24 @@ body {
     -ms-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto; }
+  .popup:target {
+    opacity: 1;
+    visibility: visible; }
+  .popup:target .popup__content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); }
+  .popup__close:link, .popup__close:visited {
+    color: #777;
+    position: absolute;
+    top: 2.5rem;
+    right: 2.5rem;
+    font-size: 3rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: all .2s;
+    line-height: 1; }
+  .popup__close:hover {
+    color: #55c57a; }
 
 .row {
   max-width: 114rem;
@@ -550,7 +574,7 @@ body {
     /* standardna verzija od klirfixa, table */
     clear: both; }
   .row [class^="col-"] {
-    /* ovo je atribut selektor, i selektuje sve class elemente cije ime pocinje (^) sa "col-", ako zelimo da selektujemo koje se zavrsavaju sa nekom recju onda je to $, a ako hocemo one koji sadrza oredjenu rec onda koristimo zvezdicu tj * */
+    /* ovo je atribut selektor, i selektuje sve class elemente cije ime pocinje (^) sa "col-", ako zelimo da selektujemo koje se zavrsavaju sa nekom recju onda je to $, a ako hocemo one koji sadrze odredjenu rec onda koristimo zvezdicu tj * */
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 6rem; }
@@ -575,7 +599,7 @@ body {
   /* cover - koliko god da je width od viewporta ili elementa, uvek pokusava da postavi element unutar boxa  */
   background-position: top;
   position: relative;
-  -wekit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   /* (x y, x y, x y) */ }
   .header__logo-box {
@@ -612,8 +636,9 @@ body {
   .footer__list {
     list-style: none; }
   .footer__item {
-    display: inline-block;
-    margin-right: 1.5rem; }
+    display: inline-block; }
+    .footer__item:not(:last-child) {
+      margin-right: 1.5rem; }
   .footer__link:link, .footer__link:visited {
     color: #f7f7f7;
     background-color: #333;
@@ -666,7 +691,7 @@ body {
   z-index: 1500;
   opacity: 0;
   width: 0;
-  transition: all .8s; }
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
 
 .navigation__list {
   position: absolute;
@@ -732,14 +757,14 @@ body {
 .navigation__button:hover .navigation__icon::after {
   top: 1rem; }
 
-.navigation__checkbox::checked + .navigation__button .navigation__icon {
+.navigation__checkbox:checked + .navigation__button .navigation__icon {
   background-color: transparent; }
 
-.navigation__checkbox::checked + .navigation__button .navigation__icon::before {
+.navigation__checkbox:checked + .navigation__button .navigation__icon::before {
   top: 0;
   transform: rotate(135deg); }
 
-.navigation__checkbox::checked + .navigation__button .navigation__icon::after {
+.navigation__checkbox:checked + .navigation__button .navigation__icon::after {
   top: 0;
   transform: rotate(-135deg); }
 
@@ -754,14 +779,14 @@ body {
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/nat-4.jpg");
   background-size: cover;
   transform: skewY(-7deg);
-  margin-top: -10rem; }
+  margin-top: -15rem; }
   .section-features > * {
     transform: skewY(7deg); }
 
 .section-tours {
   background-color: #f7f7f7;
   padding: 25rem 0 15rem 0;
-  margin-top: -10rem; }
+  margin-top: -20rem; }
 
 .section-stories {
   position: relative;

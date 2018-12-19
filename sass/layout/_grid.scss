@@ -9,7 +9,7 @@
 
     @include clearfix;
 
-    [class^="col-"] { /* ovo je atribut selektor, i selektuje sve class elemente cije ime pocinje (^) sa "col-", ako zelimo da selektujemo koje se zavrsavaju sa nekom recju onda je to $, a ako hocemo one koji sadrza oredjenu rec onda koristimo zvezdicu tj * */
+    [class^="col-"] { /* ovo je atribut selektor, i selektuje sve class elemente cije ime pocinje (^) sa "col-", ako zelimo da selektujemo koje se zavrsavaju sa nekom recju onda je to $, a ako hocemo one koji sadrze odredjenu rec onda koristimo zvezdicu tj * */
         float: left;
         // background-color: orangered;
         // color: #fff;

@@ -12,6 +12,6 @@
     &__content {
         height: 100%;
         width: 100%;
-        object-fit: cover; // dodje mu kao za slike, background-size: cover; popunjava ceo parent element (section-stories) sa videom, medjutim, opet se overfloatuje, dakle, dodamo u .bg-video overfloat
+        object-fit: cover; // dodje mu kao za slike, background-size: cover; popunjava ceo parent element (section-stories) sa videom, medjutim, opet se overfloatuje, dakle, dodamo u .bg-video overflow
     }
 }
