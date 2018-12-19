@@ -60,14 +60,39 @@
                                     /*orangered 50%*/
                                     transparent 50%), // 50% je narandzasto, dakle do pola diva (s desna na levo zzbog 105deg) je skroz narandzasto.... /* solid line se napravi (ta linija izmedju bele i narandzaste) zato on ovo zove solid-gradients*/
                                     url("../img/nat-10.jpg"); // ovo nije moguce svugde primeniti, recimo tamo gde je clip-path radjen, stv je moralo sa njim, ne sa ovim
-    background-size: 100%; // isto sto i cover
+    background-size: 100%; // isto sto i cover, fits img in the container in the X direction (width)
     border-radius: 3px;
     box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
 
     height: 50rem;
 
+    @include respond(tab-land) {
+        background-image: linear-gradient(105deg,
+                rgba($color-white, .9) 0%,
+                rgba($color-white, .9) 60%, 
+                transparent 60%),
+                url("../img/nat-10.jpg");
+        background-size: cover;
+    }
+
+    @include respond(tab-port) {
+        background-image: linear-gradient(to right,
+                rgba($color-white, .9) 0%,
+                rgba($color-white, .9) 100%, 
+                transparent 100%),
+                url("../img/nat-10.jpg");
+    }
+
     &__form {
         width: 50%; 
         padding: 6rem;
+
+        @include respond(tab-land) {
+            width: 60%;
+        }
+
+        @include respond(tab-port) {
+            width: 100%;
+        }
     }
 }
