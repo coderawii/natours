@@ -11,6 +11,10 @@
     &__logo-box {
         text-align: center; // jer se inline elmenti tretiraju kao text, dakle i centriraju i kao text
         margin-bottom: 8rem;
+        
+        @include respond(tab-port) {
+            margin-bottom: 6rem;
+        }
     }
 
     &__logo {

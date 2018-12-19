@@ -2,6 +2,10 @@
     background-color: $color-grey-light-1;
     padding: 25rem 0;
     margin-top: -20vh; /* jer je height headera 95vh, a u clip pathu imamo ono gde je 75vh, pa tako 95-75=20vh, a negativno je da ide na gore */
+
+    @include respond(tab-port) {
+        padding: 20rem 0;
+    }
 }
 
 .section-features {
@@ -13,23 +17,35 @@
         url("../img/nat-4.jpg");
     background-size: cover;
     transform: skewY(-7deg);
-    margin-top: -15rem;
+    margin-top: -10rem; // kod njega je -10rem
 
     & > * { // sva DIREKTNA deca u section-feature, da nismo samo na direktnu decu primenii ovaj skewY efekat, vec na sve childrene, onda bi se svaki children skjuvovao za 7deg, i icon i text i sve \\\\\
         transform: skewY(7deg);
+    }
+
+    @include respond(tab-port) {
+        padding: 10rem 0;
     }
 }
 
 .section-tours { // kao section-about, pa cemo kopirati nes
     background-color: $color-grey-light-1;
     padding: 25rem 0 15rem 0; // morali smo povecati na 50rem bottom 
-    margin-top: -20rem; // da bi popunili beo prazan prostotr kod gradienta tj skew-a od section-features, pomeramo ovaj div gore za 10rem (20rem je potrebno kad se odzumira) tj 100px
+    margin-top: -10rem; // da bi popunili beo prazan prostotr kod gradienta tj skew-a od section-features, pomeramo ovaj div gore za 10rem (20rem je potrebno kad se odzumira) tj 100px, kod njega je 10rem
+
+    @include respond(tab-port) {
+        padding: 20rem 0 10rem 0;
+    }
 
 }
 
 .section-stories { 
     position: relative;
     padding: 15rem 0;
+
+    @include respond(tab-port) {
+        padding: 10rem 0;
+    }
 }
 
 .section-book {
