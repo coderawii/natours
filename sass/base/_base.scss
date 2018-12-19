@@ -21,13 +21,14 @@ html { // root font-size
     //     font-size: 50%;
     // }
 
-    @include respond(tab-land) { // width < 900 ?
+    @include respond(tab-land) { // width < 1200 ?
         font-size: 56.25%; // 1rem = 9px, 9/16 = 50%
-    } // uvek VECI ide pre MANJEG, 
+    } // uvek VECI ide pre MANJEG kada je DESKTOP-FIRST, za MOBILE-FIRST od MANJEG ka VECEM
 
-    @include respond(tab-port) { // width < 600 ?
+    @include respond(tab-port) { // width < 900 ?
         font-size: 50%; // 1rem = 8px, 8/16 = 50%, da li je width manja od 50%, i mogu da pbrisem jedan, tj phone, jer oboje apply 50%
     }
+    // 700px
 
     // recimo da imamo i phone ovde bi isao, posle tab-port
 
@@ -38,4 +39,10 @@ html { // root font-size
 
 body {
     box-sizing: border-box;
+    padding: 3rem;
+
+    @include respond(tab-port) {
+        padding: 0;
+    }
+
 }

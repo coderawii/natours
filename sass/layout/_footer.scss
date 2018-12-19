@@ -4,6 +4,10 @@
     font-size: 1.4rem;
     color: $color-grey-light-1;
 
+    @include respond(tab-port) {
+        padding: 8rem 0;
+    }
+
     &__logo-box {
         text-align: center; // jer se inline elmenti tretiraju kao text, dakle i centriraju i kao text
         margin-bottom: 8rem;
@@ -18,6 +22,11 @@
         border-top: 1px solid $color-grey-dark;
         padding-top: 2rem;
         display: inline-block; // pre ovog, linija tj border-top je bio duzi od sadrzaja, a sad je duzine koje je i sadrzaj. To je jer inline-block, ne zauzima 100% dostupnog prostora, vec zauzima prostor samo onoliki koliki sadrzaju treba (koliki je i sadrzaj)
+
+        @include respond(tab-port) {
+            width: 100%;
+            text-align: center;
+        }
     }
 
     &__list {
@@ -58,5 +67,10 @@
         padding-top: 2rem;
         width: 80%;
         float: right;
+
+        @include respond(tab-port) {
+            width: 100%;
+            float: none;
+        }
     }
 }

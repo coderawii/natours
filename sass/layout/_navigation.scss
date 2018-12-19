@@ -16,6 +16,16 @@
         text-align: center;
         cursor: pointer;
 
+        @include respond(tab-port) {
+            top: 4rem;
+            rigth: 4rem;
+        }
+
+        @include respond(phone) {
+            top: 3rem;
+            rigth: 3rem;
+        }
+
     }
 
     &__background {
@@ -30,6 +40,16 @@
 
         // transform: scale(90); // kasnije cemo kad se navigacija cekira/otvori, background postane sto veci, tj skejluje se, i to cemo animirati
         transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1); // custom transform. easing.net
+
+        @include respond(tab-port) {
+            top: 4.5rem;
+            rigth: 4.5rem;
+        }
+
+        @include respond(phone) {
+            top: 3.5rem;
+            rigth: 3.5rem;
+        }
     }
 
     &__nav {

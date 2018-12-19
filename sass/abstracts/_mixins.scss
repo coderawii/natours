@@ -34,6 +34,8 @@ $breakpoint argument choices:
 - tab-land
 - big-desktop
 
+RED PROMENA: Base + typography > general layout + grid > page layout > components
+
 1em = 16px, a za media-query je najbolje koristiti em. $breakpoint/16 = koliko em-a
 */
 @mixin respond($breakpoint) {
