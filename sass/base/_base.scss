@@ -9,7 +9,31 @@
 
 html { // root font-size
     // font-size: 10px; // dodali smo zbog rem-a
-    font-size: 62.5%; // stavili smo u procente da pomnozi sa difoltnim brauzerovim, ili onim koje je korisnik stavio da mu u brauzeru bude difoltni, dakle da je font-size: 100% to bi znacilo da stavljamo 16px, ami hocemo 10px, dakle 10/16=0.625 tj 62.5%. Ovo resava i problem sa zumom, ne raspada se sajt, tj font size, vec se prilagodjava. Imaj na umu da rem ne radi u sarim browserima
+    font-size: 62.5%; // 1rem = 10px, 10px/16px = 62.5%. Stavili smo u procente da pomnozi sa difoltnim brauzerovim, ili onim koje je korisnik stavio da mu u brauzeru bude difoltni, dakle da je font-size: 100% to bi znacilo da stavljamo 16px, ami hocemo 10px, dakle 10/16=0.625 tj 62.5%. Ovo resava i problem sa zumom, ne raspada se sajt, tj font size, vec se prilagodjava. Imaj na umu da rem ne radi u sarim browserima
+
+    // I nacin
+    // @include respond-phone { // i ovde bi sad isli sa posebnim mixinom za tablet portret, pa za lendskejp, pa za big desktop, a mi zelimo da koristimo jedan @mixin za sve, i to sad idemo da napisemo
+    //     font-size: 50%;
+    // }
+
+    // II nacin
+    // @include respond(phone) {
+    //     font-size: 50%;
+    // }
+
+    @include respond(tab-land) { // width < 900 ?
+        font-size: 56.25%; // 1rem = 9px, 9/16 = 50%
+    } // uvek VECI ide pre MANJEG, 
+
+    @include respond(tab-port) { // width < 600 ?
+        font-size: 50%; // 1rem = 8px, 8/16 = 50%, da li je width manja od 50%, i mogu da pbrisem jedan, tj phone, jer oboje apply 50%
+    }
+
+    // recimo da imamo i phone ovde bi isao, posle tab-port
+
+    @include respond(big-desktop) {
+        font-size: 75%; // 1rem = 12px, 12/16 = 75%
+    }
 }
 
 body {
