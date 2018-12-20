@@ -377,7 +377,16 @@
 <!-- ===================== FOOTER ===================== -->
         <footer class="footer">
             <div class="footer__logo-box">
-                <img src="img/logo-green-2x.png" alt="Ful logo" class="footer__logo" />
+
+                <!-- ART DIRECTION - da kazemo browseru da koristi jednu sliku za jedan screen, drugu za drugi screen, i za to koristimo <picture></picture> -->
+                <picture class="footer__logo">
+                    <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x"
+                            media="(max-width: 37.5em)"> <!-- u media atributu mozemo staviti media-query css. I browser koristi ove slike u slucaju da je phone screen tj 37.5em, a ako nije, onda kositi slike iz ovog img elementa-->
+                    <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo" class="footer__logo" /> <!-- uvek treba da koristimo bar jedan img ovde, i nula ili vise sources -->
+                    
+                </picture>
+                <!-- RESPONSIVE IMAGES, sa DENCITY descriptorom (tj 1x, 2x), i time dozvoljavamo browseru da izabere koju sliku ce da koristi u odnosu na korisnikov ekran -->
+                <!-- <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Ful logo" class="footer__logo" /> -->
             </div>
 
             <div class="row">

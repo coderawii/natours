@@ -1,0 +1,11 @@
+061:
+1. resolution switching - large screen, small screen, smanjiti rezoluciju slike na manjim ekranima
+2. density switching - @2x screen (high resolution), @1x screen (low resolution), ako zelimo da slika bude ostrija, treba da dabldujemo broj piksela, smanjiti rezoluciju slike na @1x
+3. art direction - large screen, small screen, razlicita slika na manjem ekranu
+
+u ovom projektu u cssu ucitavamo slike koje kor za background.
+
+DENCITY DESCRIPTORS - imamo 2 slike, svaka za posebnu rezoluciju (1x, 2x). Sa DENCITY descriptorom (tj 1x, 2x), i time dozvoljavamo browseru da izabere koju sliku ce da koristi u odnosu na korisnikov ekran
+
+ART DIRECTION - da kazemo browseru da koristi jednu sliku za jedan screen, drugu za drugi screen, i za to koristimo <picture></picture>. U media atributu (u <source>) mozemo staviti media-query css. I browser koristi ove slike u slucaju da je phone screen tj max-width: 37.5em, a ako nije, onda kositi slike iz ovog img elementa.
+<picture><source srcset media><img srcset/></picture> - uvek treba da koristimo bar jedan <img/> ovde, i nula ili vise <sources>
