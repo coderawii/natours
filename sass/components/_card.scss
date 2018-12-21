@@ -166,7 +166,9 @@
 
 
     // kopiramo sve od carda do kraja karda ovde, i brisemo sve ono sto NE zelimo da menjamo u odnosu na desktop verziju
-    @include respond(tab-port) {
+    // @include respond(tab-port) { // morali da obrisemo jer ovo za touch uredjaje ne mozemo preko mixin responda
+    @media only screen and (max-width: 56.25em),
+        only screen and (hover: none) { // dakle ovaj dole css se primenjuje kada je screen manji od 56.25em I/ILI kada nnema hovera tj touch uredjaja, recimo ako u browseru stavimo width 1200 a uredjaj da bude phone, ovaj dole css se primenjuje, tj card ne moze da se rotira vec drugi dizajn
         height: auto;
         border-radius: 3px;
         background-color: $color-white;

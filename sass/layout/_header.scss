@@ -19,7 +19,9 @@
     }
 
     // responsive css img
-    @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em), (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em) { // visoka rezolucija, inace, i tel imaju visoku rezoluciju valjda, tj 2x, ali njima ne treba slika sa visokom rezolucijom, tako da smo jos stavili i da ova 2x slika bude ucitana za sve ekrane vece od 600px (od telefona i tab-porta).
+    @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+            only screen and (min-width: 125em),
+            only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em) { // visoka rezolucija, inace, i tel imaju visoku rezoluciju valjda, tj 2x, ali njima ne treba slika sa visokom rezolucijom, tako da smo jos stavili i da ova 2x slika bude ucitana za sve ekrane vece od 600px (od telefona i tab-porta).
     // dakle slika sa visokom rezolucijom se primeni ako je ekran visoke rezolucije (2x +) i ako je veci od 600px, ili ako je veci od 2000px (bilo da je 1x, 2x, 3x). I da, promeni u em, ne u pixele, tj 600/16 = 37.5em, 2000/16 = 125em
     // -webkit-min-device-pixel-ratio je za safari min-resolution, a vrednost 2 je 2x
         background-image: linear-gradient(to right bottom,

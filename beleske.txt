@@ -68,5 +68,10 @@ package.json:
   },
 
 
-
   ============ 066:
+  Kad selektujemo neki trext u browseru da ono ima boju selektovanosti koju mi stavimo, a ne difoltnu od browsera
+  ::SELECTION pseudo-selektor
+  Dodavanje "ONLY SCREEN AND" u @media, recimo ako neko zeli da printa nasu stranicu, onda se media-queery ne primenjuje, vec se samo primenjuje na ekrane
+  I jako bitan viewport meta: <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  Popravka za touch uredjaje za deo sa .card, jer na touch-u ne mozemo da hoverujemo i time "rotiramo" karticu te se nece videti poledjina, zato idemo da redizajniramo tj upisemo @media za to, umesto onog mixin respond-a
+  - @media only screen and (max-width: 56.25em), only screen and (hover: none) { // kod za .card kada ne moze da se rotira tj kad je phone/tablet-port ili kada nema hovera } => Dakle ovaj dole css se primenjuje kada je screen manji od 56.25em I/ILI kada nema hovera tj touch uredjaja, recimo ako u browseru stavimo width 1200 a uredjaj da bude phone, ovaj dole css se primenjuje, tj card ne moze da se rotira vec drugi dizajn
