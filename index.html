@@ -87,21 +87,24 @@
 
                     <div class="col-1-of-2">
                         <div class="composition">
-                            <!-- RESPONSIVE IMGS: RESOLUTION I DENSITY SWITCHING u jednom. Ovde sad ne koristimo density descriptor vec WIDTH descrtiptor, oni ugl informisu browser o width-u slika, bez da mora da ih prethodno downloaduje pa sam skonta width, medjutim on ovo ne moze da proceni bez SIZES atributa. Sizes se koristi da informisemo browser o pribliznom widthu slike, i razlicitog viewporta, dakle u SIZES ide lista nekoliko breakpointova -->
+                            <!-- RESPONSIVE IMGS: RESOLUTION I DENSITY SWITCHING u jednom. Ovde sad ne koristimo density descriptor vec WIDTH descrtiptor, oni ugl informisu browser o width-u slika, bez da mora da ih prethodno downloaduje pa sam skonta width, medjutim on ovo ne moze da proceni bez SIZES atributa. Sizes se koristi da informisemo browser o pribliznom widthu slike, i razlicitog viewporta, dakle u SIZES ide lista nekoliko breakpointova 
+                            
+                            Btw, za media-query treba da bude u jedinici em, a ne px, dakle 900/16=65.25em, 300/16=37.5em
+                            -->
                             <img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
-                                 sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                                 sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
                                  alt="Photo 1"
                                  class="composition__photo composition__photo--p1"
                                  src="img/nat-1-large.jpg"/> <!-- 171/900 = 0.19 tj 20% od viewporta tj 20vw, widthSlike/brekapoint = % tj vw,   171/600 = 30% tj 30vw  i  treci 300px tj difoltni, ukoliko se ni jedan od prethodnih ne apply. Takodje, treba da stavimo i src atribut za one korisnike ciji browser ne podrzava srcset i sl -->
 
                             <img srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
-                                 sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                                 sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
                                  alt="Photo 2"
                                  class="composition__photo composition__photo--p2"
                                  src="img/nat-2-large.jpg"/>
 
                              <img srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
-                                 sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                                 sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
                                  alt="Photo 3"
                                  class="composition__photo composition__photo--p3"
                                  src="img/nat-3-large.jpg"/>

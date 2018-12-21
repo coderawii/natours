@@ -3,7 +3,7 @@
     background-image: linear-gradient(to right bottom,
         rgba($color-primary-light, 0.8),
         rgba($color-primary-dark, 0.8)),
-        url(../img/hero.jpg);
+        url(../img/hero-small.jpg); // hero-small je za slucajeve kada imamo normalan screen, bez visoke rezolucije, a i ova slika je pozadina i preko ima gradijent, tako da nije spornno ako je manje rezolucije
     background-size: cover; /* cover - koliko god da je width od viewporta ili elementa, uvek pokusava da postavi element unutar boxa  */
     background-position: top;
     position: relative;
@@ -11,8 +11,25 @@
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* (x y, x y, x y) */
 
-    @include respond(phone) { // prestrma je ta linija na mobilnom, pa da bude malo blaza
+    // responsive css img
+    @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) { // visoka rezolucija, inace, i tel imaju visoku rezoluciju valjda, tj 2x, ali njima ne treba slika sa visokom rezolucijom, tako da smo jos stavili i da ova 2x slika bude ucitana za sve ekrane vece od 600px (od telefona i tab-porta).
+    // dakle slika sa visokom rezolucijom se primeni ako je ekran visoke rezolucije (2x +) i ako je veci od 600px, ili ako je veci od 2000px (bilo da je 1x, 2x, 3x). I da, promeni u em, ne u pixele, tj 600/16 = 37.5em, 2000/16 = 125em
+        background-image: linear-gradient(to right bottom,
+        rgba($color-secondary-light, 0.8),
+        rgba($color-secondary-dark, 0.8)),
+        url(../img/hero.jpg);
+    }
+
+    // @media (min-width: 2000px) { // za ekrane vece od 2000px, alito mozemo napisati i gore gde je ovaj drugi media, samo zarez stavimo
+    //     background-image: linear-gradient(to right bottom,
+    //     rgba($color-secondary-light, 0.8),
+    //     rgba($color-secondary-dark, 0.8)),
+    //     url(../img/hero.jpg);
+    // }
+
+    @include respond(phone) { // prestrma je ta linija na mobilnom, pa da bude malo blaza. Btw, ne radi mi za mozilu ovo
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+        -moz-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
         clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
     }
 

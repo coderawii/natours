@@ -23,3 +23,9 @@ RESOLUTION I DENSITY SWITCHING u jednom. Ovde sad ne koristimo density descripto
 171/600 = 30% tj 30vw
 i  treci 300px tj difoltni, ukoliko se ni jedan od prethodnih ne apply. Takodje, treba da stavimo i src atribut za one korisnike ciji browser ne podrzava srcset i sl
 Btw, stavljamo i src atribtu za slucaj da browser ne podrzava srcset atribute, no ukoliko browser razume srcset, ovaj src se ignorise
+
+
+============ 062:
+Visoka rezolucija, inace, i tel imaju visoku rezoluciju valjda, tj 2x, ali njima ne treba slika sa visokom rezolucijom, tako da smo jos stavili i da ova 2x slika bude ucitana za sve ekrane vece od 600px (od telefona i tab-porta).
+Dakle slika sa visokom rezolucijom se primeni ako je ekran visoke rezolucije (2x +) i ako je veci od 600px, ili ako je veci od 2000px (bilo da je 1x, 2x, 3x). I da, promeni u em, ne u pixele, tj 600/16 = 37.5em, 2000/16 = 125em
+     @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) { //slika kvalitentija }
