@@ -87,9 +87,29 @@
 
                     <div class="col-1-of-2">
                         <div class="composition">
-                            <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1" />
+                            <!-- RESPONSIVE IMGS: RESOLUTION I DENSITY SWITCHING u jednom. Ovde sad ne koristimo density descriptor vec WIDTH descrtiptor, oni ugl informisu browser o width-u slika, bez da mora da ih prethodno downloaduje pa sam skonta width, medjutim on ovo ne moze da proceni bez SIZES atributa. Sizes se koristi da informisemo browser o pribliznom widthu slike, i razlicitog viewporta, dakle u SIZES ide lista nekoliko breakpointova -->
+                            <img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
+                                 sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                                 alt="Photo 1"
+                                 class="composition__photo composition__photo--p1"
+                                 src="img/nat-1-large.jpg"/> <!-- 171/900 = 0.19 tj 20% od viewporta tj 20vw, widthSlike/brekapoint = % tj vw,   171/600 = 30% tj 30vw  i  treci 300px tj difoltni, ukoliko se ni jedan od prethodnih ne apply. Takodje, treba da stavimo i src atribut za one korisnike ciji browser ne podrzava srcset i sl -->
+
+                            <img srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
+                                 sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                                 alt="Photo 2"
+                                 class="composition__photo composition__photo--p2"
+                                 src="img/nat-2-large.jpg"/>
+
+                             <img srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
+                                 sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                                 alt="Photo 3"
+                                 class="composition__photo composition__photo--p3"
+                                 src="img/nat-3-large.jpg"/>
+
+
+                            <!-- <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1" />
                             <img src="img/nat-2-large.jpg" alt="Photo 2" class="composition__photo composition__photo--p2" />
-                            <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3" />
+                            <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3" /> -->
                         </div>
                     </div>
                 </div>
@@ -382,7 +402,7 @@
                 <picture class="footer__logo">
                     <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x"
                             media="(max-width: 37.5em)"> <!-- u media atributu mozemo staviti media-query css. I browser koristi ove slike u slucaju da je phone screen tj 37.5em, a ako nije, onda kositi slike iz ovog img elementa-->
-                    <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo" class="footer__logo" /> <!-- uvek treba da koristimo bar jedan img ovde, i nula ili vise sources -->
+                    <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full logo" class="footer__logo" src="img/logo-green-2x.png" /> <!-- uvek treba da koristimo bar jedan img ovde, i nula ili vise sources. Btw, stavljamo i src atribtu za slucaj da browser ne podrzava srcset atribute, no ukoliko browser razume srcset, ovaj src se ignorise -->
                     
                 </picture>
                 <!-- RESPONSIVE IMAGES, sa DENCITY descriptorom (tj 1x, 2x), i time dozvoljavamo browseru da izabere koju sliku ce da koristi u odnosu na korisnikov ekran -->
