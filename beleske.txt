@@ -35,3 +35,38 @@ Dakle slika sa visokom rezolucijom se primeni ako je ekran visoke rezolucije (2x
 caniuse.com - provera modern css propertyja
 @SUPPORTS, BACKDROP-FILTER
 BACKDROP-FILTER - stavlja filter pozadi elementa koji je selektovan, recimo blurovanje pozadine (ne slike, vec klasicnog diva), radi samo u safariju, dakle blurovanje umesto, recimo, zatamnjivanje (govorimo o nasem pop-upu u ovom projektu)
+
+
+============ 065:
+1. main.sass 
+    <COMPILATION>
+2. style.comp.css
+    <CONCATENATION>
+3. style.concat.css, icon-font.css; npm install concat --save-dev, kucaj na netu
+    <PREFIXING>
+4. style.prefix.css
+    <COMPRESING>
+5. style.css - production code, konacan css kod spreman za hostovanje
+
+package.json:
+"scripts": {
+    "watch:sass": "node-sass sass/main.scss css/style.css -w", = ovo ime prvo u "" moze biti koje god, watch, gledac, pratitelj, i tako svugde
+
+    "devserver": "live-server", => npm install live-server -g, globalno instalirali, a globalno znaci da ga necemo videti u ovom package.json, jer je on negde na kompu valjda 
+    
+    "start": "npm-run-all --parallel devserver watch:sass", => npm install npm-run-all --save-dev, ovo --parallel znaci da paralelno pokrecemo i liveserver i sass watcher
+
+    "compile:sass": "node-sass sass/main.scss css/style.comp.css", => 
+
+    "concat:css": "concat -o css/style.concat.css css/icon-font.css css/style.comp.css", => npm install concat --save-dev, ovo :css je na koji tip koda se odnosi/primenjuje, concat -o (output) <output.css> (i sad idu inputi) <jedan.css> <drugi.css> <treci.css> ...
+
+    "prefix:css": "postcss --use autoprefixer -b  \"last 10 versions\" css/style.concat.css -o css/style.prefix.css", => npm install postcss-cli --save-dev jer je autoprefixer koristi preko njega, pa npm install autoprefixer --save-dev, postcss --use autoprefixer -b (browsers) <koliko posl browsera zelimo da se ispisu prefixeri> (OBRATI PAZNJU NA \"last 10 versions\", izbacivao mi error) <inputFile> -o <outputFile>
+
+    "compress:css": "node-sass css/style.prefix.css css/style.css --output-style compressed", => node-sass <inputFile> <outputFile> --output-style compressed (ovim samo kompresuje kod, nebitno da l je sass il css, il sta god da je hteo da kaze)
+
+    "build:css": "npm-run-all compile:sass concat:css prefix:css compress:css" => npm install npm-run-all --save-dev, npm-run-all <i sad sve redom tasks koje zelimo da se odrade preko build:css komande>
+  },
+
+
+
+  ============ 066:
