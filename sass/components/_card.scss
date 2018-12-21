@@ -15,6 +15,7 @@
         top: 0;
         left: 0;
         width: 100%; // bez ovoga su nekako spljosteni front i back
+        -webkit-backface-visibility: hidden; // za safari
         backface-visibility: hidden; // ranije smo ovo koristili jer nzm ni ja, ali ovaj x nam zaista treba ovaj property. A kad je on hidden, on krije back part elementa, tj kad smo rotirali front, text ode sa leve strane i deluje kao mirror, tj vidimo back part od kartice, s ovim to vise ne vidimo
 
         // i sada nesto ne stima, kad pogledamo u inspectu vidimo da .card divu fali height, nema ga uopste, iako ova dva childrena njegova imaju, tu se desilo nesto slicno kao i sa float-om akd koristimo, pa ne stavimo clearfixer, i onda roditelj izgubi height, a posto ova dva diva (front i back) koriste absolut (i top i left) da ne bi vise bili jedan ispod drugog, oni su izvuceni iz svog prirodnog toka, i desava se nes kao i kod float-a. I moramo da i card-u stavimo  height: 52rem;

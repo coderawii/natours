@@ -29,14 +29,26 @@
         height: 15rem;
         // background-color: orangered;
         float: left;
-        -webkit-shape-outside: circle(50% at 50% 50%);
-        shape-outside: circle(50% at 50% 50%); // velicina kruga (radius), posizija centra kruga (u ovom slucaju 50% od heighta i 50% od widtha). Ovde je krug 15rem kao sto vidimo (width/height), dakle pola (50%) je 7.5rem, i stavljamo 50% (za width) i 50% (za height)
+        // -webkit-shape-outside: circle(50% at 50% 50%);
+        // shape-outside: circle(50% at 50% 50%); // velicina kruga (radius), posizija centra kruga (u ovom slucaju 50% od heighta i 50% od widtha). Ovde je krug 15rem kao sto vidimo (width/height), dakle pola (50%) je 7.5rem, i stavljamo 50% (za width) i 50% (za height)
         // da text pored ovog shape-a tj kruga bude istog oblika, tj kao da text ide oko kruga u kruznom obliku, kao napako C u ovom slucaju
 
-        -webkit-clip-path: circle(50% at 50% 50%);
-        clip-path: circle(50% at 50% 50%);
+        // -webkit-clip-path: circle(50% at 50% 50%);
+        // clip-path: circle(50% at 50% 50%);
         transform: translateX(-3rem) skewX(12deg); // nismo se zezali sa paddingfom i marginom, vec smo ovako malo odvojili krug od texta, ali wtf, dodali smo padding-left: 9rem gore u __story
         position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+
+        @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+            -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+            -webkit-shape-outside: circle(50% at 50% 50%);
+            shape-outside: circle(50% at 50% 50%); // velicina kruga (radius), posizija centra kruga (u ovom slucaju 50% od heighta i 50% od widtha). Ovde je krug 15rem kao sto vidimo (width/height), dakle pola (50%) je 7.5rem, i stavljamo 50% (za width) i 50% (za height)
+            // da text pored ovog shape-a tj kruga bude istog oblika, tj kao da text ide oko kruga u kruznom obliku, kao napako C u ovom slucaju    
+            border-radius: none;
+            
+        }
 
         @include respond(phone) {
             transform: translateX(-3rem) skewX(0);

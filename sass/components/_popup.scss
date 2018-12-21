@@ -10,6 +10,13 @@
     opacity: 0;
     visibility: hidden;
     transition: all .3s;
+    
+    // ukoliko browser podrzava backdrop-filter, apply to dole sto smo stavili, ako ne, ovo gore se apply
+    @supports(-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px); // radi samo u safariju
+        background-color: rgba($color-black, .3);
+    }
 
     &__content {
         @include absCenter; // u ovome imamo isto transform, a znamo da ne mozemo koristiti 2 transforma istovremeno
